@@ -1,0 +1,21 @@
+apiVerion: v1
+kind: ReplicationController
+metadata:
+    name: hello-node
+    labels:
+        name: hello-node
+        app: demo
+spec:
+    replicas: 2
+    template:
+        metadata:
+            labels:
+                name: hello-node
+        spec:
+            containers:
+              - name: hello-node
+                image: hello-node:v1
+                imagePullPolicy: IfNotPresent
+                ports:
+                  - containerPort: 8080
+                    protocol: TCP
